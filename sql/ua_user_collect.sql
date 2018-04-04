@@ -1,0 +1,21 @@
+CREATE TABLE `ua_user_collect` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `authID` varchar(32) DEFAULT NULL,
+  `devID` varchar(32) NOT NULL COMMENT '开发者编号',
+  `appID` varchar(32) DEFAULT NULL COMMENT '应用编号',
+  `productID` varchar(16) DEFAULT NULL,
+  `contentID` varchar(64) DEFAULT NULL,
+  `categoryID` int(10) unsigned DEFAULT NULL COMMENT '类型ID',
+  `contentType` tinyint(4) DEFAULT NULL COMMENT '内容类型：1点播，2直播节目，3直播频道，可以开发者自定义分类',
+  `creater` varchar(32) DEFAULT NULL,
+  `createTime` varchar(32) DEFAULT NULL,
+  `parentID` varchar(64) DEFAULT NULL,
+  `ext` text COMMENT '内容详情',
+  PRIMARY KEY (`id`),
+  KEY `index_ua_user_collect_authID` (`authID`) USING BTREE,
+  KEY `index_ua_user_collect_devID` (`devID`) USING BTREE,
+  KEY `index_ua_user_collect_createTime` (`createTime`) USING BTREE,
+  KEY `index_ua_user_collect_contentID` (`contentID`) USING BTREE,
+  KEY `index_ua_user_collect_categoryID` (`categoryID`) USING BTREE,
+  KEY `index_ua_user_collect_contentType` (`contentType`) USING BTREE
+) ENGINE=MyISAM AUTO_INCREMENT=12156607 DEFAULT CHARSET=utf8 COMMENT='用户收藏表'
