@@ -9,6 +9,7 @@ local time = os.time
 local gmatch = string.gmatch
 local error = error
 local setmetatable = setmetatable
+local pairs = pairs
 
 local config = require(APP_ROOT .. "/config/config")
 
@@ -85,6 +86,53 @@ function helper.InArray(val, arr)
 	end
 	return false
 end
+
+-- 创建一个table的副本，并对副本中的每个元素应用callback function
+function helper.ArrayMap(array, callback)
+	local newArray = {}
+	for key, value in pairs(array) do
+		newArray[key] = callback(value)
+	end
+	return newArray
+end
+
+function helper.ArrayKeysValues(array)
+	if type(array) ~= "table" then
+		return nil
+	end
+	
+	local keys = {}
+	local values = {}
+	
+	for key, value in pairs(array) do
+		keys[#keys+1] = key
+		values[#values+1] = value
+	end
+	
+	return keys, values
+end
+
+-- fetch hash table key
+function helper.ArrayKeys(array)
+	local keys, _ = helper.ArrayKeysValues(array)
+	return keys
+end
+
+-- fetch hash table value
+function helper.ArrayValues(array)
+	local _, values = helper.ArrayKeysValues(array)
+	return values
+end
+
+-- combine hash table use keys array and values array
+function helper.ArrayCombine(keys, values)
+	local hash = {}
+	for i =1, #keys do
+		hash[keys[i]] = values[i]
+	end
+	return hash
+end
+
 
 -- 日期字符串转换为时间戳
 function helper.StrToTime(datetime)

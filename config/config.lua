@@ -15,7 +15,7 @@ return {
 	PLAY_HISTORY_IS_EXPIRE		=	1,
 	PLAY_HISTORY_KEEPALIVE_TIME	=	604800,
 
-	COLLECT_TABLE			=	"ua_user_collect",
+	COLLECT_TABLE				=	"ua_user_collect",
 	COLLECT_APPIDS_ZSET_KEY		=	"ua_co_appids_zset",
 	COLLECT_AUTHIDS_LIST_KEY	=	"ua_co_authids_list",
 	COLLECT_HASH_KEY_PREFIX		=	"ua_co_hash_",
@@ -39,6 +39,7 @@ return {
 	
 	DOWNLINE_CONTENTIDS_SET		=	"ua_dl_contentids_set",
 	
+	CONTENT_DETAIL_TABLE		=	"ua_content_detail",
 	CONTENT_DETAIL_PREFIX		=   "ua_content_detail_",
 	CONTENT_DETAIL_TTL		=	864000,
 
@@ -48,6 +49,7 @@ return {
 	MYSQL_PASS			=	"123@qwe",
 	MYSQL_DBNAME			=	"useraction",
 	MYSQL_TIMEOUT			=	3000,
+	MYSQL_CHARSET			=	"utf8",
 	MYSQL_MAX_PACKET_SIZE		=	1048576,
 	MYSQL_KEEPALIVE_TIME		=	5000,
 	MYSQL_KEEPALIVE_COUNT		=	20,

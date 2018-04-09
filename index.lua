@@ -27,10 +27,18 @@ if Error then
 	helper.Exit(Error.code, Error.msg)
 end
 
+ngx.header["Content-Type"] = "text/html;charset=utf-8"
+
 local ok, ret = pcall(Method, Controller)
 
+Controller:__destruct()  -- 调用析构函数
+
 if not ok then
-	helper.Exit(ret.code, ret.msg)
+	if type(ret) == "table" then
+		helper.Exit(ret.code, ret.msg)
+	else
+		helper.Exit(444, ret)
+	end
 end
 
 helper.Exit(0, "ok", ret)
